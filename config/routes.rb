@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  devise_for :users
+  root 'home#index'
+
+  get 'home/index', as: 'home'
+
   get 'interests/new'
 
   get 'interests/create'
