@@ -1,2 +1,16 @@
-<h1>Hey Young World.</h1>
-<p>The World Is Yours!</p>
+<% if current_user == nil %>
+	<div class="message">
+		<h1 id="un">
+			Ubuntu Nation
+		</h1><br>
+		<p id="untag">
+			<span id="messages"></span>
+		</p>
+		<div id="invite">
+		<%= link_to "Become A Nation Builder", new_user_registration_path %>
+		</div>
+	</div>
+
+
+<% end %>
+

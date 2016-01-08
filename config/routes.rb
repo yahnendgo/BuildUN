@@ -1,89 +1,145 @@
 Rails.application.routes.draw do
 
+  get 'photo_comments/new'
+
+  get 'photo_comments/create'
+
+  get 'photo_comments/show'
+
+  get 'photo_comments/edit'
+
+  get 'photo_comments/destroy'
+
+  get 'post_comment/new'
+
+  get 'post_comment/create'
+
+  get 'post_comment/show'
+
+  get 'post_comment/edit'
+
+  get 'post_comment/destroy'
+
+  # get 'photos/new'
+
+  # get 'photos/create'
+
+  # get 'photos/show'
+
+  # get 'photos/index'
+
+  # get 'photos/edit'
+
+  # get 'photos/destroy'
+
+  # get 'profiles/create'
+
+  # get 'profiles/edit'
+
+  # get 'profiles/show'
+
+  # get 'profiles/destroy'
+
+  # get 'sessions/create'
+
+  # get 'sessions/index'
+
+  # get 'sessions/show'
+
+  # get 'sessions/destroy'
+
   devise_for :users
+
+  get 'home/learn' => "home/learn", as: "learn"
+
+  get 'home/whyun' => "home/whyun", as: "whyun"
+
+  get 'home/build' => "home/build", as: "build"
+
+  get 'home/inspiration' => "home/inspiration", as: "inspiration"  
+
+  post 'users/:user_id/issues' => "users#add_issues", as: 'add_issues'
+
+  get 'users/:user_id/profile' => "profiles#show", as: 'user_profile'
+  resources :users do
+      resource :profile
+      resources :photos
+      resources :posts
+      resources :media
+  end
+
+  get 'issues/index_form'
+  resources :issues
+  
   root 'home#index'
 
   get 'home/index', as: 'home'
 
-  get 'interests/new'
+  # get 'issues/new'
 
-  get 'interests/create'
+  # get 'issues/create'
 
-  get 'interests/index'
+  # get 'issues/edit'
 
-  get 'interests/edit'
+  # get 'issues/update'
 
-  get 'interests/update'
+  # get 'issues/destroy'
 
-  get 'interests/destroy'
+  # get 'media/new'
 
-  get 'media/new'
+  # get 'media/create'
 
-  get 'media/create'
+  # get 'media/edit'
 
-  get 'media/edit'
+  # get 'media/index'
 
-  get 'media/index'
+  # get 'media/show'
 
-  get 'media/show'
+  # get 'media/destroy'
 
-  get 'media/destroy'
+  # get 'messages/new'
 
-  get 'messages/new'
+  # get 'messages/create'
 
-  get 'messages/create'
+  # get 'messages/index'
 
-  get 'messages/index'
+  # get 'messages/show'
 
-  get 'messages/show'
+  # get 'messages/destroy'
 
-  get 'messages/destroy'
+  # get 'users/new'
 
-  get 'posts/new'
+  # get 'users/create'
 
-  get 'posts/create'
+  # get 'users/edit'
 
-  get 'posts/edit'
+  # get 'users/index'
 
-  get 'posts/index'
+  # get 'users/show'
 
-  get 'posts/show'
+  # get 'users/destroy'
 
-  get 'posts/destroy'
+  # get 'new/create'
 
-  get 'users/new'
+  # get 'new/edit'
 
-  get 'users/create'
+  # get 'new/index'
 
-  get 'users/edit'
+  # get 'new/show'
 
-  get 'users/index'
+  # get 'new/destroy'
 
-  get 'users/show'
+  # get 'new/create'
 
-  get 'users/destroy'
+  # get 'new/edit'
 
-  get 'new/create'
+  # get 'new/update'
 
-  get 'new/edit'
+  # get 'new/index'
 
-  get 'new/index'
+  # get 'new/show'
 
-  get 'new/show'
-
-  get 'new/destroy'
-
-  get 'new/create'
-
-  get 'new/edit'
-
-  get 'new/update'
-
-  get 'new/index'
-
-  get 'new/show'
-
-  get 'new/destroy'
+  # get 'new/destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

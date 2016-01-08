@@ -2,13 +2,23 @@
 <html>
 <head>
   <title>Buildunation</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= flash[:notice] if flash[:notice] %> 
-<%= flash[:alert] if flash[:alert] %>
+	<% if flash[:notice] or flash[:alert]%>
+		<div id="flash">
+		<%= flash[:notice] if flash[:notice] %> 
+		<%= flash[:alert] if flash[:alert] %>
+		</div>
+	<% end %>
+
+<%= render :partial => "layouts/nav" unless @skip_nav %>
+<%= render :partial => "layouts/learn" if @skip_nav %>	
+
+<img src="/images/flaghooded.jpg" id="logo">
+
 <%= yield %>
 
 </body>

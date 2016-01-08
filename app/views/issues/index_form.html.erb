@@ -1,0 +1,20 @@
+<h2>
+	Click each issue below that the matters most to you.<br>
+</h2>
+<br>
+
+
+
+<div class="IssuesIndex">
+	<%= form_tag add_issues_path(current_user) do %>
+		<% @issues.each do |issue| %>
+			<div class="align">
+			<%= check_box_tag 'issue_ids[]', issue.id, issue.users.include?(current_user) %>
+			<%= image_tag issue.avatar.url(:medium) %><br>
+			<%= issue.name %><br>
+			<%= issue.description %><br>
+			</div>
+		<% end %>
+		<%= submit_tag "Update" %>
+	<% end %>
+</div>

@@ -1,0 +1,3 @@
+<%= image_tag @photo.avatar.url(:medium) %><br>
+<%= @photo.description %><br>
+<%= link_to "See all" + current_user.profile.fname + "'s photos", user_photos_path %>

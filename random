@@ -1,0 +1,90 @@
+	<div class="">
+		<%= f.label :issues, "Your post." %><br>
+		<%= f.collection_select :issue_id, Issue.all, :id, :name, prompt: true %>
+	</div>
+
+<%= form_for :issues, url: add_issues_path(current_user) do |f| %>
+	<% @issues.each do |issue| %>
+		 <div class="issuesIndex">
+			<%= f.check_box :issue_id, {multiple: true}, issue.id, nil %>
+		 	<%= image_tag issue.avatar.url(:medium) %><br>
+			<%= issue.name %><br>
+			<%= issue.description %><br>
+		 </div>
+	 <% end %>
+	 <%= f.submit "Submit" %>
+ <% end %>
+
+<%= f.collection_check_boxes :submission_ids, Submission::SUB_ID, :to_s, :to_s %>
+
+	<%= form_for :issues, url: add_issues_path(current_user) do |f| %>
+		<%= f.collection_check_boxes :issue_ids, Issues.all do |b| %>
+			<div class="collection-check-box">
+				<%= b.check_box %>
+				<%= b.label %>
+			</div>
+		<% end %>
+	<% end %>
+
+<div class="selfies">
+	<div class="seflie1">
+		<img src="<%= current_user.profile.avatar1 %>">
+	</div>
+	<div class="seflie2">
+		<img src="<%= current_user.profile.avatar2 %>">
+	</div>
+	<div class="seflie3">
+		<img src="<%= current_user.profile.avatar3 %>">
+	</div>
+	<div class="seflie4">
+		<img src="<%= current_user.profile.avatar4 %>">
+	</div>
+</div>
+
+<h2>
+	Posts
+</h2>
+
+<div class="posts">
+	<div class="post1">
+	<%= post.subject %><br>
+	<img src="<%= post.last.avatar %>" class="postav"><%= post.last.body %>
+	</div>
+	<div class="post2">
+	<%= post.subject %><br>
+	<img src="<%= post.avatar %>" class="postav"><%= post.body %>
+	</div>
+		<div class="post3">
+	<%= post.subject %><br>
+	<img src="<%= post.avatar %>" class="postav"><%= post.body %>
+	</div>
+</div>
+
+<h2>
+	Media
+</h2>
+<div class="media">
+
+</div>
+<h2>
+	Connections
+</h2>
+<div class="connections">
+	<div>
+		<img src="<%= connection.avatar %>"><br>
+		<%= connection.profile.fname %> <%= connection.profile.lname %>
+	</div>
+	<div>
+		<img src="<%= connection.avatar %>"><br>
+		<%= connection.profile.fname %> <%= connection.profile.lname %>
+	</div>
+	<div>
+		<img src="<%= connection.avatar %>"><br>
+		<%= connection.profile.fname %> <%= connection.profile.lname %>
+	</div>
+	<div>
+		<img src="<%= connection.avatar %>"><br>
+		<%= connection.profile.fname %> <%= connection.profile.lname %>
+	</div>
+</div>
+

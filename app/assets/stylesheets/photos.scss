@@ -1,0 +1,105 @@
+// Place all the styles related to the photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.propic {
+	display: inline;
+}
+
+.iss {
+	border: 2px solid white;
+	width: 40%;
+	height: 85px;
+	float: left;
+	margin: 5px;
+	// overflow: hidden;
+
+	img {
+		width: 28%;
+	}
+}
+
+.photo {
+	border: 2px solid white;
+	width: 23%;
+	height: 250px;
+	float: left;
+	margin: 5px;
+	overflow: hidden;
+
+	img {
+		height: 175px;
+	}
+}
+
+.user {
+	border: 2px solid white;
+	width: 12%;
+	height: 125px;
+	float: left;
+	margin: 5px;
+	overflow: hidden;
+
+	img {
+		height: 100px;
+	}
+}
+
+.float {
+	clear: left;
+}
+
+.editpng {
+	img {
+	width: 23px;
+	float: left;
+	}
+}
+
+.editphoto {
+	width: 100%;
+	clear: both;
+	// background: black;
+}
+
+.isswrapper {
+	height: 1332px;
+	overflow: scroll;
+	width: 100%;
+	display: inline-block;
+
+}
+
+.prowrapper {
+	height: 300px;
+	overflow-x: scroll;
+	width: 100%;
+	display: inline-block;
+
+}
+.userwrapper {
+	height: 175px;
+	overflow-y: scroll;
+	width: 100%;
+	display: inline-block;
+	// clear: both;
+}
+
+#proright {
+	border: 2px solid white;
+	background: rgba(255, 255, 255, .8);
+	width: 75%;
+	height: 1085px;
+	position: absolute;
+	top: 50px;
+	left: 350px;
+}
+
+#prorighttag {
+	border: 2px solid white;
+	background: rgba(255, 255, 255, .8);
+	width: 75%;
+	height: 1364px;
+	position: absolute;
+	top: 1270px;
+	left: 350px;
+}

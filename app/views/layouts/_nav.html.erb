@@ -1,0 +1,43 @@
+<div class="menubar">
+	<% if current_user %>
+		<nav class="nav">
+			<li>
+				<a href="" class="navli">Home</a><span style= "color:white"> | </span>
+			</li>
+			<li>
+				<%= link_to "Profile", user_profile_path(current_user) %><span style= "color:white"> | </span> 
+			</li>
+			<li>
+				<a href="" class="navli">Media</a><span style= "color:white"> | </span>
+			</li>
+			<li>
+				<a href="" class="navli">Messages</a><span style= "color:white"> | </span>			</li>
+			<li>
+				<%= link_to "Issues", issues_path %><span style= "color:white"> | </span>
+			</li>
+			<li>
+				<%= link_to "Account", edit_user_registration_path %><span style= "color:white"> | </span>
+			</li>
+			<li>
+				<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+			</li>
+		</nav>
+
+	<% else %>
+		<nav class="nav">
+			<li>
+				<%= link_to "Learn More", learn_path %><span style="color:white"> | </span>
+			</li>
+			<li>
+				<%= link_to "Become A Nation Builder", new_user_registration_path %><span style="color:white"> | </span>
+			</li>
+			<li>
+				<%= link_to "Join The Community", new_user_registration_path %><span style="color:white"> | </span>
+			</li>
+			<li>
+				<%= link_to "Enter", new_user_session_path %>
+			</li>
+		</nav>
+
+	<% end %>
+</div>

@@ -1,0 +1,61 @@
+
+#form {
+		text-align: center;
+		position: absolute;
+		top: 307px;
+		width: 250px;
+		margin-left: 25px;
+		padding: 5px;
+		border: 2px solid white;
+		background: rgba(255, 255, 255, .8);
+
+	.field, .field1 {
+		font-size: 25px;
+		line-height: 30px;
+		padding-bottom: 10px;
+	}
+
+	input {
+		line-height: 20px;
+		font-size: 16px;
+		width: 200px;
+	}
+
+	.actions {
+		input {
+		width: 85px;
+		height: 35px;
+		background: black;
+		color: white;
+		}
+	}
+
+	.field1 {
+		input {
+			line-height: 20px;
+			font-size: 16px;
+			width: 20px;
+			}
+	}
+
+	.formlabel {
+		font-size: 30px;
+		display: inline
+	}
+
+}
+
+.form1, .form2 {
+	position: absolute;
+	top: 150px;
+	border: 1px s white;
+	background: rgba(255, 255, 255, .8);
+	width: 200px;
+	text-align: center;
+}
+
+.form2 {
+	right: 5px;
+	display: inline-block;
+}
+

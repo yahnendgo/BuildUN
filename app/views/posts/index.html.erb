@@ -1,2 +1,9 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+	<% @posts.each do |post| %>
+		<div class="issuesIndex">
+		 	<%= image_tag post.avatar.url(:medium) %><br>
+			<%= post.title %><br>
+			<%= post.body %><br>
+			<%= link_to "Engage this Post", post(@user) %>
+	 	</div>
+	<% end %>
+	 </div>

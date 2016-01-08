@@ -1,0 +1,181 @@
+<div id="fixer">
+	<div id="formbg">
+		<%= form_for current_user.profile, url: {action: :update, controller: :profiles, method: :post}, html: { multipart: true } do |f|%>
+
+			<h2>Please update any information necessary using the form below:</h2>
+
+			<table align="center" cellpadding="5" cellspacing="5">
+				<tr>
+					<td>
+						Primary Image:
+					</td>
+					<td>
+						<%= f.file_field :avatar %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						First Name:
+					</td>
+					<td>
+						<%= f.text_field :fname %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Last Name:
+					</td>
+					<td>
+						<%= f.text_field :lname %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Street Address:
+					</td>
+					<td>
+						<%= f.text_field :street_address %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						City:
+					</td>
+					<td>
+						<%= f.text_field :city %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						State or Province:
+					</td>
+					<td>
+						<%= f.text_field :state %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Country:
+					</td>
+					<td>
+						<%= f.text_field :country %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Zip or Post Code:
+					</td>
+					<td>
+						<%= f.text_field :zip %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Email:
+					</td>
+					<td>
+						<%= f.text_field :email %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Mobile:
+					</td>
+					<td>
+						<%= f.text_field :cell %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Handles:
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Facebook:
+					</td>
+					<td>
+						<%= f.text_field :fbhandle %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Twitter:
+					</td>
+					<td>
+						<%= f.text_field :twhandle %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						LinkedIn:
+					</td>
+					<td>
+						<%= f.text_field :lihandle %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Instagram:
+					</td>
+					<td>
+						<%= f.text_field :insthandle %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Experience working in Human Rights:
+					</td>
+					<td>
+						<%= f.check_box :hractive %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Areas of Human Rights you are most focused:
+					</td>
+					<td>
+						<%= f.text_area :focuses %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						What you consider yourself:
+					</td>
+					<td>
+						<%= f.collection_select :title, Profile::TITLE, :to_s, :to_s, :prompt => "Please Select", :multiple => true, :size => 7 %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Your professional title:
+					</td>
+					<td>
+						<%= f.text_field :profession %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Skills you can offer as a volunteer:
+					</td>
+					<td>
+						<%= f.text_area :volunteer_skills %>
+					</td>
+				</tr>	
+					<td>
+						Skills you can offer as a consultant:
+					</td>
+					<td>
+						<%= f.text_area :consultant_skills %>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">	
+						<%= f.submit %>
+					</td>
+				</tr>
+			</table>
+
+		<% end %>
+	</div>
+</div>

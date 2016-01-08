@@ -1,0 +1,29 @@
+<div id="fixer">
+	<div class="headers">
+		<h1><br>
+			Human Rights Issues
+		</h1>
+		<h3 class="tag">
+			Individuals are working on these issues all over the world. Let's now come together from our varied vantage points and experiences and use our combined skills and power to erase these issues from Earth and create our very own Beautiful World.
+		</h3>
+	</div>
+</div>
+<div class="fixertoo">
+	<div>
+		<% @issues.each do |issue| %>
+			<div class="issuesIndex">
+			 	<%= image_tag issue.avatar.url(:medium) %><br>
+				<%= issue.name %><br>
+				<%= issue.description %><br>
+				<%= link_to "Engage this Issue", issue_path(issue) %>
+		 	</div>
+		<% end %>
+	</div>
+
+	<div class="headers moved">
+		<h3>
+			Are we missing an important issue? 
+			<%= link_to "Click here", new_issue_path %> to submit an issue to be added to our database.
+		</h3>
+	</div>
+</div>
