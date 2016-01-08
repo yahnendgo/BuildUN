@@ -105,6 +105,15 @@ h1, h2, h3 {
 	margin: auto;
 }
 
+.formwrapper {
+	width: 400px;
+	border: 2px solid white;
+	background: rgba(255, 255, 255, .8);
+	margin: auto;
+	font-size: 18px;
+	font: arial;
+}
+
 .message {
 	position: absolute;
 	display: none;

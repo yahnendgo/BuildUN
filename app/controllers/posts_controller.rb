@@ -14,8 +14,6 @@ class PostsController < ApplicationController
       issues.each do |i|
          @post.issues.push(Issue.find(i)) 
       end
-      puts "POST ISSUES ARE: "
-      puts @post.issues.inspect
 
         flash[:notice] = "Great Post!"
         redirect_to user_post_path(@user, @post)

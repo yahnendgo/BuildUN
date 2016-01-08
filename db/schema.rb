@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160107220536) do
+ActiveRecord::Schema.define(version: 20160108123159) do
 
   create_table "credentials", force: :cascade do |t|
     t.integer  "user_id"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20160107220536) do
 
   create_table "media", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "type"
+    t.string   "mediatype"
     t.string   "name"
     t.string   "author"
     t.string   "description"

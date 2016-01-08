@@ -165,7 +165,7 @@
 		<div class="editphoto">
 		<!-- edit icon -->
 			<span class="editpng">
-				<%= link_to new_user_photo_path(current_user) do %>
+				<%= link_to new_user_post_path(current_user) do %>
 		 			<%= image_tag "/images/edit.png" %><br>
 		 		<%end %>
 		 	</span>
@@ -177,7 +177,6 @@
 						<%= post.body %>
 					</div>
 				<% end %>
-				</div>
 				<div class="photo">
 					post
 				</div>
@@ -197,7 +196,7 @@
 		<div class="editphoto">
 		<!-- edit icon -->
 			<span class="editpng">
-				<%= link_to new_user_photo_path(current_user) do %>
+				<%= link_to new_user_medium_path(current_user) do %>
 		 			<%= image_tag "/images/edit.png" %><br>
 		 		<%end %>
 		 	</span>
@@ -325,7 +324,7 @@
 	<div class="prowrapper">
 		<div class="editphoto">
 			<span class="editpng">
-				<%= link_to new_user_photo_path(current_user) do %>
+				<%= link_to new_user_post_path(current_user) do %>
 		 			<%= image_tag "/images/edit.png" %><br>
 		 		<%end %>
 		 	</span>
@@ -351,7 +350,7 @@
 	<div class="prowrapper">
 		<div class="editphoto">
 			<span class="editpng">
-				<%= link_to new_user_photo_path(current_user) do %>
+				<%= link_to new_user_medium_path(current_user) do %>
 		 			<%= image_tag "/images/edit.png" %><br>
 		 		<%end %>
 		 	</span>
