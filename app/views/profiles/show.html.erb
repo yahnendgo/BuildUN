@@ -10,17 +10,9 @@
 
 	<div class="profile">
 		<div id="proimage">
-
-			<div class="editphoto">
-				<span class="editpng">
-					<%= link_to new_user_photo_path(current_user) do %>
-			 		<%= image_tag "/images/edit.png" %><br>
-			 	<%end %>
-			 	</span>
-				<span class="propic">
-				<%= image_tag current_user.profile.avatar.url(:medium) %>
-				</span>
-			</div>
+			<span class="propic">
+			<%= image_tag current_user.profile.avatar.url(:medium) %>
+			</span>
 		</div><br>
 		<%= current_user.profile.fname %> <%= current_user.profile.lname %><br>
 		From:<br>
@@ -42,13 +34,15 @@
 			<p class="indent caps"><%= current_user.profile.volunteer_skills %></p><br>
 		Skills <%= current_user.profile.fname %> can contribute as a consultant:<br>
 			<p class="indent"><%= current_user.profile.consultant_skills %></p><br><br>
-			<%= link_to "Select Your Human Rights Focuses", issues_index_form_path %><br><br>
 			<div id="edit">
 			<%= link_to "Edit Profile", edit_user_profile_path(current_user) %>
-		</div>
-		<br>
-		Human Rights Issues closest to <%= current_user.profile.fname %>'s heart:
-		<br>
+			</div>
+			<br>
+		<h3>
+		Human Rights Issues closest to <%= current_user.profile.fname %>'s heart
+
+			(<%= link_to "update", issues_index_form_path %>):
+		</h3>
 		<div class="isswrapper">
 			<% current_user.issues.each do |issue| %>
 			 <div class="iss">
@@ -59,9 +53,182 @@
 		</div>	
 	</div>
 
+<!-- above, end of profile info on left -->
+<!-- first row, #selfies -->
+
+	<div id="proright">
+		<div class="prowrapper">
+			<h1 class="proheaders">
+				Your Photos
+			</h1>
+			<div class="editphoto">
+				<span class="editpng">
+					<% if @user == current_user %>
+						<%= link_to new_user_photo_path(current_user) do %>
+				 			<%= image_tag "/images/edit.png" %>
+				 		<% end %>
+				 		<%= link_to user_photos_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% else %>
+				 		<%= link_to user_photos_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% end %>
+			 	</span>
+			 	<div class="float">
+					<% @photos.each do |photo| %>
+				 		<div class="photo">
+				 			<%= link_to user_photo_path(current_user, photo) do %>
+				 				<%= image_tag photo.avatar.url(:medium) %><br>
+				 			<% end %>
+							<%= photo.description %><br>
+						 </div>
+					 <% end %>
+				</div>
+			</div>
+		</div>	
+
+	<!-- second row, #connections -->
+
+		<div class="userwrapper">
+			<h1 class="proheaders">
+				Your Connections
+			</h1>
+			<div class="editphoto">
+				<span class="editpng">
+					<% if @user == current_user %>
+						<%= link_to users_path do %>
+				 			<%= image_tag "/images/edit.png" %>
+				 		<% end %>
+				 		<%= link_to users_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% else %>
+				 		<%= link_to users_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% end %>
+			 	</span>
+			 	<div class="float">
+					<% @users.each do |user| %>
+						 <div class="user">
+						 	<%= image_tag user.profile.avatar.url(:thumb) %><br>
+							<%= link_to user.profile.fname, user_profile_path(user) %>
+						</div>
+					<% end %>
+					<div class="user">
+						connection
+					</div>
+					<div class="user">
+						connection
+					</div>
+					<div class="user">
+						connection
+					</div>
+					<div class="user">
+						connection
+					</div>
+					<div class="user">
+						connection
+					</div>
+					<div class="user">
+						connection
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<!-- third row, #posts -->
+
+		<div class="prowrapper">
+			<h1 class="proheaders">
+				Your Posts	
+			</h1>
+			<div class="editphoto">
+			<!-- edit icon -->
+				<span class="editpng">
+					<% if @user == current_user %>
+						<%= link_to new_user_photo_path(current_user) do %>
+				 			<%= image_tag "/images/edit.png" %>
+				 		<% end %>
+				 		<%= link_to user_posts_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% else %>
+				 		<%= link_to user_photos_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% end %>
+			 	</span>
+			 	<div class="float">
+					<% @posts.each do |post| %>
+						<div class="photo">
+						 	<span class="postavatar">
+						 	<%= image_tag post.avatar.url(:thumb) %>
+						 	</span><br>
+							<%= link_to post.title, user_profile_path %><br>
+							<%= post.body %>
+						</div>
+					<% end %>
+					<div class="photo">
+						post
+					</div>
+					<div class="photo">
+						post
+					</div>
+					<div class="photo">
+						post
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<!-- fourth row, #media -->
+
+		<div class="prowrapper">
+			<h1 class="proheaders">
+				Your Media Shares	
+			</h1>
+			<div class="editphoto">
+			<!-- edit icon -->
+				<span class="editpng">
+					<% if @user == current_user %>
+						<%= link_to new_user_photo_path(current_user) do %>
+				 			<%= image_tag "/images/edit.png" %>
+				 		<% end %>
+				 		<%= link_to user_photos_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% else %>
+				 		<%= link_to user_photos_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% end %>
+			 	</span>
+				<div class="float">
+					<div class="photo">
+						media
+					</div>
+					<div class="photo">
+						media
+					</div>
+					<div class="photo">
+						media
+					</div>
+					<div class="photo">
+						media
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+
 <% else %>
 
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!-- not current_user's page -->
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 
 	<h1 id="welcome">
 		<div id="proimage">
@@ -93,281 +260,187 @@
 			<p class="indent"><%= @profile.volunteer_skills %></p><br>
 		Skills <%= @profile.fname %> can contribute as a consultant:<br>
 			<p class="indent"><%= @profile.consultant_skills %></p><br>
+		Human Rights Issues closest to <%= @profile.fname %>'s heart:<br><br>
+		<div class="isswrapper">
+			<% @user.issues.each do |issue| %>
+			 <div class="iss">
+			 	<%= image_tag issue.avatar.url(:thumb) %><br>
+				<%= issue.name %><br>
+			 </div>
+			 <% end %>
+		</div>	
 	</div>
 
-<% end %>
 
 <!-- above, end of profile info on left -->
 <!-- first row, #selfies -->
 
-<div id="proright">
-	<div class="prowrapper">
-		<div class="editphoto">
-			<span class="editpng">
-				<%= link_to new_user_photo_path(current_user) do %>
-		 			<%= image_tag "/images/edit.png" %><br>
-		 		<%end %>
-		 	</span>
-		 	<div class="float">
-				<% @photos.each do |photo| %>
-			 		<div class="photo">
-			 			<%= link_to user_photo_path(current_user, photo) do %>
-			 				<%= image_tag photo.avatar.url(:medium) %><br>
-			 			<% end %>
-						<%= photo.description %><br>
-					 </div>
-				 <% end %>
-			</div>
-		</div>
-	</div>	
-
-<!-- second row, #connections -->
-
-	<div class="userwrapper">
-		<div class="editphoto">
-			<span class="editpng">
-				<%= link_to new_user_photo_path(current_user) do %>
-		 			<%= image_tag "/images/edit.png" %><br>
-		 		<%end %>
-		 	</span>
-		 	<div class="float">
-				<% @users.each do |user| %>
-					 <div class="user">
-					 	<%= image_tag user.profile.avatar.url(:thumb) %><br>
-						<%= link_to user.profile.fname, user_profile_path(user) %>
-					</div>
-				<% end %>
-				<div class="user">
-					connection
-				</div>
-				<div class="user">
-					connection
-				</div>
-				<div class="user">
-					connection
-				</div>
-				<div class="user">
-					connection
-				</div>
-				<div class="user">
-					connection
-				</div>
-				<div class="user">
-					connection
+	<div id="proright">
+		<div class="prowrapper">
+			<h1 class="proheaders">
+				Photos of <%= @profile.fname %>
+			</h1>
+			<div class="editphoto">
+				<span class="editpng">
+					<% if @user == current_user %>
+						<%= link_to new_user_photo_path(current_user) do %>
+				 			<%= image_tag "/images/edit.png" %>
+				 		<% end %>
+				 		<%= link_to user_photos_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% else %>
+				 		<%= link_to user_photos_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% end %>
+			 	</span>
+			 	<div class="float">
+					<% @photos.each do |photo| %>
+				 		<div class="photo">
+				 			<%= link_to user_photo_path(current_user, photo) do %>
+				 				<%= image_tag photo.avatar.url(:medium) %><br>
+				 			<% end %>
+							<%= photo.description %><br>
+						 </div>
+					 <% end %>
 				</div>
 			</div>
-		</div>
-	</div>
+		</div>	
 
-<!-- third row, #posts -->
+	<!-- second row, #connections -->
 
-	<div class="prowrapper">
-		<div class="editphoto">
-		<!-- edit icon -->
-			<span class="editpng">
-				<%= link_to new_user_post_path(current_user) do %>
-		 			<%= image_tag "/images/edit.png" %><br>
-		 		<%end %>
-		 	</span>
-		 	<div class="float">
-				<% @posts.each do |post| %>
-					<div class="photo">
-					 	<%= image_tag post.avatar.url(:thumb) %><br>
-						<%= link_to post.title, user_profile_path %>
-						<%= post.body %>
-					</div>
-				<% end %>
-				<div class="photo">
-					post
-				</div>
-				<div class="photo">
-					post
-				</div>
-				<div class="photo">
-					post
-				</div>
-			</div>
-		</div>
-	</div>
-
-<!-- fourth row, #media -->
-
-	<div class="prowrapper">
-		<div class="editphoto">
-		<!-- edit icon -->
-			<span class="editpng">
-				<%= link_to new_user_medium_path(current_user) do %>
-		 			<%= image_tag "/images/edit.png" %><br>
-		 		<%end %>
-		 	</span>
-			<div class="float">
-				<div class="photo">
-					media
-				</div>
-				<div class="photo">
-					media
-				</div>
-				<div class="photo">
-					media
-				</div>
-				<div class="photo">
-					media
-				</div>
-			</div>
-		</div>
-	</div>	
-</div>
-
-<!-- the @user is tagged -->
-
-<div id="prorighttag">
-
-<!-- fifth row, #friendies -->
-
-	<div class="prowrapper">
-		<div class="editphoto">
-			<span class="editpng">
-				<%= link_to new_user_photo_path(current_user) do %>
-		 			<%= image_tag "/images/edit.png" %><br>
-		 		<%end %>
-		 	</span>
-			<div class="float">
-				<% @photos.each do |photo| %>
-					 <div class="photo">
-					 	<%= image_tag photo.avatar.url(:medium) %><br>
-						<%= photo.description %><br>
-						<%= link_to "Engage this photo", user_photo_path(current_user, photo) %>
-					 </div>
-				<% end %>
-			</div>
-		</div>
-	</div>	
-
-<!-- sixth row, #followers -->
-
-	<div class="userwrapper">
-		<div class="editphoto">
-			<span class="editpng">
-				<%= link_to new_user_photo_path(current_user) do %>
-		 			<%= image_tag "/images/edit.png" %><br>
-		 		<%end %>
-		 	</span>
-			<div class="float">
-				<% @users.each do |user| %>
+		<div class="userwrapper">
+			<h1 class="proheaders">
+				<%= @profile.fname %>'s Connections
+			</h1>
+			<div class="editphoto">
+				<span class="editpng">
+					<% if @user == current_user %>
+						<%= link_to users_path do %>
+				 			<%= image_tag "/images/edit.png" %>
+				 		<% end %>
+				 		<%= link_to users_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% else %>
+				 		<%= link_to users_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% end %>
+			 	</span>
+			 	<div class="float">
+					<% @users.each do |user| %>
+						 <div class="user">
+						 	<%= image_tag user.profile.avatar.url(:thumb) %><br>
+							<%= link_to user.profile.fname, user_profile_path(user) %>
+						</div>
+					<% end %>
 					<div class="user">
-					 	<%= image_tag user.profile.avatar.url(:thumb) %><br>
-						<%= link_to user.profile.fname, user_profile_path(user) %>
+						connection
 					</div>
-				<% end %>
-				<div class="user">
-					follower
-				</div>
-				<div class="user">
-					follower
-				</div>
-				<div class="user">
-					follower
-				</div>
-				<div class="user">
-					follower
-				</div>
-				<div class="user">
-					follower
-				</div>
-				<div class="user">
-					follower
-				</div>
-			</div>
-		</div>
-	</div>
-
-<!-- seventh row, #following -->
-
-	<div class="userwrapper">
-		<div class="editphoto">
-			<span class="editpng">
-				<%= link_to new_user_photo_path(current_user) do %>
-		 			<%= image_tag "/images/edit.png" %><br>
-		 		<%end %>
-		 	</span>
-			<div class="float">
-				<% @users.each do |user| %>
-					 <div class="user">
-					 	<%= image_tag user.profile.avatar.url(:thumb) %><br>
-						<%= link_to user.profile.fname, user_profile_path(user) %>
+					<div class="user">
+						connection
 					</div>
-				 <% end %>
-				<div class="user">
-					following
-				</div>
-				<div class="user">
-					following
-				</div>
-				<div class="user">
-					following
-				</div>
-				<div class="user">
-					following
-				</div>
-				<div class="user">
-					following
-				</div>
-				<div class="user">
-					following
+					<div class="user">
+						connection
+					</div>
+					<div class="user">
+						connection
+					</div>
+					<div class="user">
+						connection
+					</div>
+					<div class="user">
+						connection
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-<!-- eigth row, #posts -->
+	<!-- third row, #posts -->
 
-	<div class="prowrapper">
-		<div class="editphoto">
-			<span class="editpng">
-				<%= link_to new_user_post_path(current_user) do %>
-		 			<%= image_tag "/images/edit.png" %><br>
-		 		<%end %>
-		 	</span>
-			<div class="float">
-				<div class="photo">
-					post
-				</div>
-				<div class="photo">
-					post
-				</div>
-				<div class="photo">
-					post
-				</div>
-				<div class="photo">
-					post
+		<div class="prowrapper">
+			<h1 class="proheaders">
+				Posts of <%= @profile.fname %>	
+			</h1>
+			<div class="editphoto">
+			<!-- edit icon -->
+				<span class="editpng">
+					<% if @user == current_user %>
+						<%= link_to new_user_photo_path(current_user) do %>
+				 			<%= image_tag "/images/edit.png" %>
+				 		<% end %>
+				 		<%= link_to user_posts_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% else %>
+				 		<%= link_to user_photos_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% end %>
+			 	</span>
+			 	<div class="float">
+					<% @posts.each do |post| %>
+						<div class="photo">
+						 	<span class="postavatar">
+						 	<%= image_tag post.avatar.url(:thumb) %>
+						 	</span><br>
+							<%= link_to post.title, user_profile_path %><br>
+							<%= post.body %>
+						</div>
+					<% end %>
+					<div class="photo">
+						post
+					</div>
+					<div class="photo">
+						post
+					</div>
+					<div class="photo">
+						post
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-<!-- ninth row, #media -->
+	<!-- fourth row, #media -->
 
-	<div class="prowrapper">
-		<div class="editphoto">
-			<span class="editpng">
-				<%= link_to new_user_medium_path(current_user) do %>
-		 			<%= image_tag "/images/edit.png" %><br>
-		 		<%end %>
-		 	</span>
-			<div class="float">
-				<div class="photo">
-					media
-				</div>
-				<div class="photo">
-					media
-				</div>
-				<div class="photo">
-					media
-				</div>
-				<div class="photo">
-					media
+		<div class="prowrapper">
+			<h1 class="proheaders">
+				<%= @profile.fname %>'s Media Shares	
+			</h1>
+			<div class="editphoto">
+			<!-- edit icon -->
+				<span class="editpng">
+					<% if @user == current_user %>
+						<%= link_to new_user_photo_path(current_user) do %>
+				 			<%= image_tag "/images/edit.png" %>
+				 		<% end %>
+				 		<%= link_to user_photos_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% else %>
+				 		<%= link_to user_photos_path(current_user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 		<% end %>
+				 	<% end %>
+			 	</span>
+				<div class="float">
+					<div class="photo">
+						media
+					</div>
+					<div class="photo">
+						media
+					</div>
+					<div class="photo">
+						media
+					</div>
+					<div class="photo">
+						media
+					</div>
 				</div>
 			</div>
-		</div>
+		</div>	
 	</div>
-</div>
+
+<% end %>

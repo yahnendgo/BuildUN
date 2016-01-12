@@ -1,3 +1,6 @@
-<%= image_tag @photo.avatar.url(:medium) %><br>
-<%= @photo.description %><br>
-<%= link_to "See all" + current_user.profile.fname + "'s photos", user_photos_path %>
+<div id="form">
+	<%= image_tag @photo.avatar.url(:medium) %><br>
+	<%= @photo.description %><br>
+	<%= link_to "See all" + @photo.user.profile.fname + "'s photos", user_photos_path(@photo.user.id) %><br>
+	<%= link_to "Go to" + @photo.user.profile.fname + "'s profile", user_profile_path(@photo.user) %>
+</div>

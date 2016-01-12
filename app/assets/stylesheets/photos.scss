@@ -52,6 +52,8 @@
 	img {
 	width: 23px;
 	float: left;
+	margin-right: 5px;
+	margin-top: 5px;
 	}
 }
 
@@ -59,47 +61,4 @@
 	width: 100%;
 	clear: both;
 	// background: black;
-}
-
-.isswrapper {
-	height: 1332px;
-	overflow: scroll;
-	width: 100%;
-	display: inline-block;
-
-}
-
-.prowrapper {
-	height: 300px;
-	overflow-x: scroll;
-	width: 100%;
-	display: inline-block;
-
-}
-.userwrapper {
-	height: 175px;
-	overflow-y: scroll;
-	width: 100%;
-	display: inline-block;
-	// clear: both;
-}
-
-#proright {
-	border: 2px solid white;
-	background: rgba(255, 255, 255, .8);
-	width: 75%;
-	height: 1085px;
-	position: absolute;
-	top: 50px;
-	left: 350px;
-}
-
-#prorighttag {
-	border: 2px solid white;
-	background: rgba(255, 255, 255, .8);
-	width: 75%;
-	height: 1364px;
-	position: absolute;
-	top: 1270px;
-	left: 350px;
 }

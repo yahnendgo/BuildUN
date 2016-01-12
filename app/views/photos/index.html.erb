@@ -4,6 +4,7 @@
 		 	<%= image_tag photo.avatar.url(:medium) %><br>
 			<%= photo.description %><br>
 			<%= link_to "Engage this photo", user_photo_path(current_user, photo) %>
+			<%= link_to "Go to's profile", user_profile_path(@photo.user) %>
 		 </div>
 	 <% end %>
  </div>

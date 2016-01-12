@@ -18,12 +18,12 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @photo = Photo.find_by_id params[:id]
+    @user = User.find_by_id params[:id]
+    @photo = user.photo
   end
 
   def index
-    @user = current_user
+    @user = User.find_by_id params[:id]
     @photos = @user.photos.all
   end
 

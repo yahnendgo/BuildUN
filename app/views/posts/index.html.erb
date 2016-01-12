@@ -3,7 +3,6 @@
 		 	<%= image_tag post.avatar.url(:medium) %><br>
 			<%= post.title %><br>
 			<%= post.body %><br>
-			<%= link_to "Engage this Post", post(@user) %>
+			<%= link_to "Engage this Post", user_post_path(post.user.id, post) %>
 	 	</div>
 	<% end %>
-	 </div>

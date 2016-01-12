@@ -1,20 +1,32 @@
-<h2>
-	Click each issue below that the matters most to you.<br>
-</h2>
-<br>
-
-
-
-<div class="IssuesIndex">
-	<%= form_tag add_issues_path(current_user) do %>
-		<% @issues.each do |issue| %>
-			<div class="align">
-			<%= check_box_tag 'issue_ids[]', issue.id, issue.users.include?(current_user) %>
-			<%= image_tag issue.avatar.url(:medium) %><br>
-			<%= issue.name %><br>
-			<%= issue.description %><br>
-			</div>
+<div id="fixer">
+	<div class="headers">
+		<h1><br>
+			Click each issue below that matters the most to you.
+		</h1>
+	</div>
+</div>
+<div class="fixertoo">
+	<div>
+		<%= form_tag add_issues_path(current_user) do %>
+			<% @issues.each do |issue| %>
+				<div class="issuesIndex">
+					<%= check_box_tag 'issue_ids[]', issue.id, issue.users.include?(current_user) %>
+					<%= image_tag issue.avatar.url(:medium) %><br>
+					<%= issue.name %><br>
+					<%= issue.description %><br>
+				</div>
+			<% end %>
+		</div>
+			<div class="moved" id="udbutton">
+				<br><%= submit_tag "Update" %>
+			</div><br><br>
 		<% end %>
-		<%= submit_tag "Update" %>
-	<% end %>
+
+
+	<div class="headers moved">
+		<h3>
+			Are we missing an important issue? 
+			<%= link_to "Click here", new_issue_path %> to submit an issue to be added to our database.
+		</h3>
+	</div>
 </div>

@@ -32,7 +32,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @user = current_user
     @post = Post.find_by_id params[:id]
   end
 

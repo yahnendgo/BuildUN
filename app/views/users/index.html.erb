@@ -1,2 +1,14 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="fixer">
+	<div class="form">
+		<h1>
+			Look Who's Here!
+		</h1>
+
+		<% @users.each do |user| %>
+			 <div class="user issuesIndex">
+			 	<%= image_tag user.profile.avatar.url(:thumb) %><br>
+				<%= link_to user.profile.fname, user_profile_path(user) %>
+			</div>
+		<% end %>
+	</div>
+</div>

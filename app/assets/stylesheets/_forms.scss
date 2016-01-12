@@ -10,8 +10,8 @@
 		background: rgba(255, 255, 255, .8);
 
 	.field, .field1 {
-		font-size: 25px;
-		line-height: 30px;
+		font-size: 20px;
+		line-height: 25px;
 		padding-bottom: 10px;
 	}
 
@@ -43,6 +43,15 @@
 		display: inline
 	}
 
+}
+
+.formwrapper {
+	width: 400px;
+	border: 2px solid white;
+	background: rgba(255, 255, 255, .8);
+	margin: auto;
+	font-size: 18px;
+	font: arial;
 }
 
 .form1, .form2 {
