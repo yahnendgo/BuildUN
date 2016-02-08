@@ -27,7 +27,7 @@
 				<%= f.label "Select the issues relevant to this medium:" %><br /> 
 				<% for issue in Issue.all %> 
 					<%= check_box_tag 'issues[]', issue.id, current_user.issues.include?(issue.id), :id => dom_id(issue) %> 
-					<%= label_tag dom_id(issue), issue.name, :class => "check_box_label" %> 
+					<%= label_tag dom_id(issue), issue.name, :class => "check_box_label" %> <br>
 				<% end %> 
 
 			<div id="submit">

@@ -16,6 +16,8 @@ class IssuesController < ApplicationController
   def show
     @issue = Issue.find_by_id params[:id]
     @post = Post.new
+    @medium = Medium.new
+    @user = current_user
   end
 
   def index

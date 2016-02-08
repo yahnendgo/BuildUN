@@ -18,13 +18,32 @@
 	}
 }
 
+// lightbox affect on show page
+#showborder {
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .7);
+}
+
+.media {
+	border: 2px solid white;
+	width: 31%;
+	height: 250px;
+	float: left;
+	margin: 5px;
+	overflow: scroll;
+
+	img {
+		height: 175px;
+	}
+}
 .photo {
 	border: 2px solid white;
 	width: 23%;
 	height: 250px;
 	float: left;
 	margin: 5px;
-	overflow: hidden;
+	overflow: scroll;
 
 	img {
 		height: 175px;
@@ -46,6 +65,8 @@
 
 .float {
 	clear: left;
+
+
 }
 
 .editpng {
@@ -61,4 +82,30 @@
 	width: 100%;
 	clear: both;
 	// background: black;
+}
+
+.postavatar {
+	img {
+	height: 50px;
+	float: left;
+	margin-right: 5px;
+	border: 2px solid white;
+	}
+}
+
+
+#photoshow {
+	width: 700px;
+	margin: auto;
+	border: 5px solid white;
+	background: rgba(255, 255, 255, .8);
+	text-align: center;
+	img{
+		width: 100%;
+	}
+}
+
+.showpic 
+	img {
+	margin-top: 50px;
 }

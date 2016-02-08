@@ -4,6 +4,8 @@
 
 body {
 	background-image: url("/images/flaghooded.jpg");
+	background-position: left top;
+	background-attachment: fixed;
 }
 // styling for logo
 
@@ -58,11 +60,25 @@ h1, h2, h3 {
 	top: -171px;
 }
 
+.link {
+	border: 2px solid white;
+	background: rgba(255, 255, 255, .8);
+	width: 100%;
+	margin-top: 10px;
+}
+
 .trborder {
 		border: 2px solid white;
 }
 
 .tag {
+	width: 700px;
+	margin: auto;
+	color: rgb(23,179,228);
+	font-style: italic;
+}
+
+.tag2 {
 	width: 700px;
 	margin: auto;
 	color: rgb(23,179,228);
@@ -83,6 +99,7 @@ h1, h2, h3 {
 	border: 2px solid white;
 	background: rgba(255, 255, 255, .8);
 	height: 180px;
+	width: 100%;
 }
 
 #flags2 {
@@ -138,7 +155,7 @@ h1, h2, h3 {
 }
 
 #flash {
-	border: 2px s black;
+	border: 2px solid black;
 	background: rgba(0, 0, 0, .8);
 	color: white;
 	font-size: 16px;
@@ -188,6 +205,11 @@ h1, h2, h3 {
 
 .caps {
 	text-transform: capitalize;
+}
+
+.editphoto {
+	overflow: auto;
+	direction: ltr;
 }
 
 #edit {

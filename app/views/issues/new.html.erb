@@ -1,25 +1,26 @@
-<%= image_tag current_user.profile.avatar.url(:medium) %>
-<h1>Hey <%= current_user.profile.fname %>!</h1> 
-Please complete the form below to help us ensure we are supporting all Human Rights issues.
+<div class="formwrapper">
+	<h1>Hey <%= current_user.profile.fname %>!</h1> 
+	Please complete the form below to help us ensure we are supporting all Human Rights issues.
 
-<%= form_for @issue, url: issues_path, action: :create, method: :post do |f| %>
-		<div class="">
-			<%= f.label :name, "Name the issue." %><br>
-			<%= f.text_field :name %>
-		</div>
-		<div class="">
-			<%= f.label :avatar, "Upload a photo that represents this issue. (Use of photo is subject to appropriateness and use permissions." %><br>
-			<%= f.file_field :avatar %>
-		</div>
-		<div class="">
-			<%= f.label :reasoning, "Please tell us the reasoning behind the chosen photo, and share any information such as a url, ownership, or photographer or artist, which will enable us to determine our right to use this image." %><br>
-			<%= f.text_area :reasoning %>
-		</div>
-		<div class="">
-			<%= f.label :description, "Please give a brief description of the issue" %><br>
-			<%= f.text_area :description %>
-		</div>
-		<div id="submit">
-			<%= f.submit 'Submit' %>
-		</div>
+	<%= form_for @issue, url: issues_path, action: :create, method: :post do |f| %>
+			<div class="">
+				<%= f.label :name, "Name the issue." %><br>
+				<%= f.text_field :name %>
+			</div>
+			<div class="">
+				<%= f.label :avatar, "Upload a photo that represents this issue. (Use of photo is subject to appropriateness and use permissions." %><br>
+				<%= f.file_field :avatar %>
+			</div>
+			<div class="">
+				<%= f.label :reasoning, "Please tell us the reasoning behind the chosen photo, and share any information such as a url, ownership, or photographer or artist, which will enable us to determine our right to use this image." %><br>
+				<%= f.text_area :reasoning %>
+			</div>
+			<div class="">
+				<%= f.label :description, "Please give a brief description of the issue" %><br>
+				<%= f.text_area :description %>
+			</div>
+			<div id="submit">
+				<%= f.submit 'Submit' %>
+			</div>
 		<% end %>
+</div>

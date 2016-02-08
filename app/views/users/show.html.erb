@@ -1,1 +1,8 @@
-Users Show!
+	<% @posts.each do |post| %>
+		<div class="issuesIndex">
+		 	<%= image_tag post.avatar.url(:medium) %><br>
+			<%= post.title %><br>
+			<%= post.body %><br>
+			<%= link_to "Engage this Post", post(@user) %>
+	 	</div>
+	<% end %>

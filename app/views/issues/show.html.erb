@@ -1,3 +1,5 @@
+<!-- heading -->
+
 <div id="fixer">
 	<div class="headers">
 		<h1><br>
@@ -11,16 +13,53 @@
 	</div>
 </div>
 
+<!-- media form -->
 
 <div id="form" class="field">
+	<h3>
+		Share Media about this issue.
+	</h3>
+		<%= form_for @medium, url: user_media_path(current_user.id), action: :create, method: :post do |f| %>
+			<div class="">
+				<%= f.label :media, "Upload media!" %><br>
+				<%= f.file_field :media %>
+			</div>
+			<div class="">
+				<%= f.label :mediatype, "Type of media file:" %><br>
+				<%= f.text_field :mediatype %>
+			</div>
+			<div class="">
+				<%= f.label :name, "Name of Media:" %><br>
+				<%= f.text_field :name %>
+			</div>
+			<div class="">
+				<%= f.label :author, "Author:" %><br>
+				<%= f.text_field :author %>
+			</div>
+			<div class="">
+				<%= f.label :description, "Description:" %><br>
+				<%= f.text_area :description %>
+			</div><br>
+			<div class="">
+				<%= f.label "Select the issues relevant to this medium:" %><br /> 
+				<% for issue in Issue.all %> 
+					<%= check_box_tag 'issues[]', issue.id, current_user.issues.include?(issue.id), :id => dom_id(issue) %>
+					<%= label_tag dom_id(issue), issue.name, :class => "check_box_label" %> 
+				<% end %> 
+				</div>
+			<div id="submit">
+				<%= f.submit 'Submit' %>
+			</div>
+		<% end %>
+</div>
+
+<!-- post form -->
+
+<div id="form1" class="field">
 	<h3>
 		Post about this issue.
 	</h3>
 		<%= form_for @post, url: user_posts_path(current_user.id), action: :create, method: :post do |f| %>
-			<div class="field">
-				<%= f.label :avatar, "Upload a photo if you like!" %><br><br>
-				<%= f.file_field :avatar %>
-			</div>
 			<div class="">
 				<%= f.label :title, "Title:" %><br>
 				<%= f.text_field :title %>
@@ -34,17 +73,96 @@
 				<% for issue in Issue.all %> 
 					<%= check_box_tag 'issues[]', issue.id, current_user.issues.include?(issue.id), :id => dom_id(issue) %> 
 					<%= label_tag dom_id(issue), issue.name, :class => "check_box_label" %> 
-				<% end %> 
-
+				<% end %>
+			</div>
+			<div class="field">
+				<br>
+				<%= f.label :avatar, "Upload a photo if you like!" %><br><br>
+				<%= f.file_field :avatar %>
+			</div>
 			<div id="submit">
 				<%= f.submit 'Submit' %>
 			</div>
 		<% end %>
 </div>
 
+<!-- right rows -->
+<!-- builders -->
 
+<div id="issuesright">
+	<div class="userwrapper">
+		<h1 class="proheaders">
+			Builders Who Focus On This Issue
+		</h1>
+		<div class="editphoto">
+			<span class="editpng">
+		 		<%= link_to users_path do %>
+		 			<%= image_tag "/images/eye.png" %>
+		 		<% end %>
+		 	</span>
+		 	<div class="float">
+				<% @issue.users.each do |user| %>
+					<div class="user">
+						<%= link_to user_profile_path(user) do %>
+						 	<%= image_tag user.profile.avatar.url(:thumb) %><br>
+							<%= user.profile.fname %><br>
+						<% end %>
+						<%= link_to "Engage this User", user_profile_path(user) %>
+				 	</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
 
+<!-- media -->
 
+	<div class="prowrapper">
+		<h1 class="proheaders">
+			Media About This Issue
+		</h1>
+		<div class="editphoto">
+			<span class="editpng">
+		 		<%= link_to users_path do %>
+		 			<%= image_tag "/images/eye.png" %>
+		 		<% end %>
+		 	</span>
+		 	<div class="float">
+				<% @issue.media.each do |medium| %>
+					<div class="user">
+					 	<%= image_tag user.profile.avatar.url(:thumb) %><br>
+						<%= user.profile.fname %><br>
+						<%= link_to "Engage this User", user_profile_path(user) %>
+				 	</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
 
+<!-- posts -->
 
+	<div class="prowrapper">
+		<h1 class="proheaders">
+			Posts About This Issue
+		</h1>
+		<div class="editphoto">
+			<span class="editpng">
+		 		<%= link_to user_posts_path(@user) do %>
+		 			<%= image_tag "/images/eye.png" %>
+		 		<% end %>
+		 	</span>
+		 	<div class="float">
+				<% @issue.posts.each do |post| %>
+					<div class="photo">
+						<span class="postavatar">
+					 		<%= image_tag post.avatar.url(:thumb) %><br>
+						</span>
+						<%= post.title %><br><br>
+						<%= post.body %><br>
+						<%= link_to "Engage this post", user_post_path(post, post.user) %>
+				 	</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
 

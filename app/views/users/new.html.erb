@@ -1,2 +1,60 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div id="fixer">
+  <div class="headers">
+    <h1><br>
+      Attention Ubuntu Nation
+    </h1>
+ 	<h2 class="tag"><center>
+ 		Become A Member of this Community
+ 	</center></h2>
+  </div>
+</div>
+
+<div id="fixer">
+  <div id="registration">
+    <h2>
+      What's Going on
+    </h2>
+     <h3>
+      We are building the framework for a community founded on the idea that every life is important and should matter to every one of us. This idea, and our embracement of it, should be demonstrated in how our societies are developed. This site is an invitation for people to partner in the building of this community framework and to learn about and interact with individuals determined to make a difference. Others interested in staying informed of the process can join as a community member. Once the framework is in place, community members will need only a minimal commitment to be able to take their highly significan, instrumental place in this transformative and restorative process.
+    </h3>
+    <h2>
+      What it Means to 
+      <span class="tag">
+      	Become A Community Member
+      </span>
+    </h2>
+    <h3>
+      If you sign up as a Community Member you are interested joining this community once the framework is built. You will receive emails when <i>significant</i> benchmarks have been achieved, and when the full site launches. You will be welcome to enter this builders site to learn builders' perspectives about various issues and keep abreast of the building process.
+    </h3>
+  </div>
+</div>
+
+<div id="form">
+  <h2 class="formlabel">Sign up</h2><br><br>
+
+  <%= form_for @user do |f| %>
+
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign Up" %>
+    </div>
+  <% end %>
+</div>
+

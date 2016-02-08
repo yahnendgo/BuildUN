@@ -1,8 +1,11 @@
 	<% @posts.each do |post| %>
 		<div class="issuesIndex">
-		 	<%= image_tag post.avatar.url(:medium) %><br>
-			<%= post.title %><br>
-			<%= post.body %><br>
+			<h4>
+				<%= post.title %><br>
+			</h4>
+		 	<%= image_tag post.avatar.url(:thumb) %><br>
+			<%= post.body %><br><br>
 			<%= link_to "Engage this Post", user_post_path(post.user.id, post) %>
+			<%= link_to "Go to" + post.user.profile.fname + "'s profile", user_profile_path(post.user) %>
 	 	</div>
 	<% end %>

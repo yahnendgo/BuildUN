@@ -28,11 +28,12 @@ class PostsController < ApplicationController
 
   def index
     @user = current_user
-    @posts = @user.posts.all
+    @posts = @user.posts.order id: :desc
   end
 
   def show
     @post = Post.find_by_id params[:id]
+    @comment = Comment.new
   end
 
   def destroy

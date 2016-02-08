@@ -61,6 +61,9 @@ Rails.application.routes.draw do
   post 'users/:user_id/issues' => "users#add_issues", as: 'add_issues'
 
   get 'users/:user_id/profile' => "profiles#show", as: 'user_profile'
+
+  get 'users/sign_up_m' =>"devise/registrations#new_m", as: "new_user_m_registration"
+
   resources :users do
       resource :profile
       resources :photos

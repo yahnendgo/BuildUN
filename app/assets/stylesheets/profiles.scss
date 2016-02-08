@@ -6,9 +6,9 @@
 // headers in the sections on the right
 
 .profile {
-	border: 2px solid white;
+	border: 7px solid black;
 	background: rgba(255, 255, 255, .8);
-	width: 250px;
+	width: 240px;
 	padding: 5px;
 	margin-left: 25px;
 	position: absolute;
@@ -32,9 +32,21 @@
 
 }
 
+.mediawrapper {
+	height: 335px;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	width: 99%;
+	display: inline-block;
+	border: 5px solid white;
+	margin-top: 50px;
+
+}
+
 .prowrapper {
 	height: 335px;
-	overflow: hidden;
+	overflow-y: hidden;
+	overflow-x: scroll;
 	width: 99%;
 	display: inline-block;
 	border: 5px solid white;
@@ -51,12 +63,12 @@
 }
 
 #proright {
-	border: 2px solid white;
+	border: 7px solid black;
 	background: rgba(255, 255, 255, .8);
 	width: 75%;
 	height: 1475px;
 	position: absolute;
-	top: 50px;
+	top: 56px;
 	left: 350px;
 }
 

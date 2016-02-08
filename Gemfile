@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'paperclip', '~> 4.3'
 
+gem 'paperclip-av-transcoder'
+
 gem 'mandrill-api'
 
 # Use ActiveModel has_secure_password

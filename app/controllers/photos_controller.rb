@@ -19,12 +19,13 @@ class PhotosController < ApplicationController
 
   def show
     @user = User.find_by_id params[:id]
-    @photo = user.photo
+    @photo = Photo.find_by_id params[:id]
+    @comment = Comment.new
   end
 
   def index
-    @user = User.find_by_id params[:id]
-    @photos = @user.photos.all
+    @user = current_user
+    @photos = Photo.order id: :desc
   end
 
   def edit

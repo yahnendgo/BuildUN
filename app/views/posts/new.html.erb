@@ -4,10 +4,6 @@
 	</h3>
 		<%= form_for @post, url: user_posts_path(current_user.id), action: :create, method: :post do |f| %>
 			<div class="">
-				<%= f.label :avatar, "Upload a photo if you like!" %><br>
-				<%= f.file_field :avatar %>
-			</div>
-			<div class="">
 				<%= f.label :title, "Title:" %><br>
 				<%= f.text_field :title %>
 			</div>
@@ -19,9 +15,12 @@
 				<%= f.label "Select the issues relevant to this post:" %><br /> 
 				<% for issue in Issue.all %> 
 					<%= check_box_tag 'issues[]', issue.id, current_user.issues.include?(issue.id), :id => dom_id(issue) %> 
-					<%= label_tag dom_id(issue), issue.name, :class => "check_box_label" %> 
-				<% end %> 
-
+					<%= label_tag dom_id(issue), issue.name, :class => "check_box_label" %> <br>
+				<% end %> <br>
+			<div class="">
+				<%= f.label :avatar, "Upload a photo if you like!" %><br>
+				<%= f.file_field :avatar %>
+			</div><br>
 			<div id="submit">
 				<%= f.submit 'Submit' %>
 			</div>

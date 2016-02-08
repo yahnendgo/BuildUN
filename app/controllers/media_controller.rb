@@ -27,9 +27,13 @@ class MediaController < ApplicationController
   end
 
   def index
+    @user = current_user
+    @media = @user.media.order id: :desc
   end
 
   def show
+    @medium = Medium.find_by_id params[:id]
+    @comment = Comment.new
   end
 
   def destroy

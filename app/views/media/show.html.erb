@@ -1,2 +1,20 @@
-<h1>Media#show</h1>
-<p>Find me in app/views/media/show.html.erb</p>
+<div id="fixer">
+	<div class="headers">
+		<h1>
+			<% if current_user %>
+			<%= current_user.profile.fname %>, what an awesome video!
+			<% else %>
+			Check out <%= @user.profile.fname %>'s awesome video!
+			<% end %>
+		</h1>
+		<h2>
+			<span class="tag">Video Title:</span><br>
+			<%= @medium.name %> by <%= @medium.author%>
+		</h2>
+		<div class="issuesShow">
+			<%= video_tag @medium.media.url(:medium), :controls => true %><br>
+			<%= @medium.description %><br>
+			<%= link_to "See all" + current_user.profile.fname + "'s videos", user_media_path %>
+		</div>
+	</div>
+</div>

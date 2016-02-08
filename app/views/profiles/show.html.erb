@@ -42,39 +42,126 @@
 		Human Rights Issues closest to <%= current_user.profile.fname %>'s heart
 
 			(<%= link_to "update", issues_index_form_path %>):
-		</h3>
+		</h3>	
 		<div class="isswrapper">
 			<% current_user.issues.each do |issue| %>
-			 <div class="iss">
-			 	<%= image_tag issue.avatar.url(:thumb) %><br>
-				<%= issue.name %><br>
-			 </div>
+				<%= link_to issue_path(issue) do %>	
+					 <div class="iss">
+					 	<%= image_tag issue.avatar.url(:thumb) %><br>
+						<%= issue.name %><br>
+				 	</div>
+				<% end %>
 			 <% end %>
-		</div>	
+			</div>	
 	</div>
 
 <!-- above, end of profile info on left -->
-<!-- first row, #selfies -->
+<!-- below, beginning of profile info on right -->
+
 
 	<div id="proright">
+
+	<!-- first row, #media -->
+
+		<div class="mediawrapper">
+			<h1 class="proheaders">
+				Your Media Shares	
+			</h1>
+			<div class="editphoto">
+			<!-- edit icon -->
+				<span class="editpng">
+					<%= link_to new_user_photo_path(current_user) do %>
+			 			<%= image_tag "/images/edit.png" %>
+			 		<% end %>
+			 		<%= link_to user_photos_path(current_user) do %>
+			 			<%= image_tag "/images/eye.png" %>
+			 		<% end %>
+			 	</span>
+				<div class="float">
+					<% @media.each do |medium| %>
+						<div class="media">
+						 	<span class="postavatar">
+						 	<%= video_tag medium.media.url(:medium), :controls => true %>
+						 	</span>
+						 	<h4>
+								<%= medium.name %><br>
+								<%= medium.description %>
+							</h4>
+						</div>
+					<% end %>
+					<div class="photo">
+						media
+					</div>
+					<div class="photo">
+						media
+					</div>
+					<div class="photo">
+						media
+					</div>
+					<div class="photo">
+						media
+					</div>
+				</div>
+			</div>
+		</div>	
+	
+
+	<!-- second row, #posts -->
+
+		<div class="prowrapper">
+			<h1 class="proheaders">
+				Your Posts	
+			</h1>
+			<div class="editphoto">
+			<!-- edit icon -->
+				<span class="editpng">
+					<%= link_to new_user_post_path(current_user) do %>
+			 			<%= image_tag "/images/edit.png" %>
+			 		<% end %>
+			 		<%= link_to user_posts_path(current_user) do %>
+			 			<%= image_tag "/images/eye.png" %>
+			 		<% end %>
+			 	</span>
+			 	<div class="float">
+					<% @posts.each do |post| %>
+						<div class="photo">
+						 	<span class="postavatar">
+						 	<%= image_tag post.avatar.url %>
+						 	</span>
+						 	<h4>
+								<%= link_to post.title, user_post_path(current_user, post) %><br><br>
+								<%= post.body %>
+							</h4>
+						</div>
+					<% end %>
+					<div class="photo">
+						post
+					</div>
+					<div class="photo">
+						post
+					</div>
+					<div class="photo">
+						post
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<!-- third row, #connections -->
+
+
 		<div class="prowrapper">
 			<h1 class="proheaders">
 				Your Photos
 			</h1>
 			<div class="editphoto">
 				<span class="editpng">
-					<% if @user == current_user %>
-						<%= link_to new_user_photo_path(current_user) do %>
-				 			<%= image_tag "/images/edit.png" %>
-				 		<% end %>
-				 		<%= link_to user_photos_path(current_user) do %>
-				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% else %>
-				 		<%= link_to user_photos_path(current_user) do %>
-				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% end %>
+					<%= link_to new_user_photo_path(current_user) do %>
+			 			<%= image_tag "/images/edit.png" %>
+			 		<% end %>
+			 		<%= link_to user_photos_path(current_user) do %>
+			 			<%= image_tag "/images/eye.png" %>
+			 		<% end %>
 			 	</span>
 			 	<div class="float">
 					<% @photos.each do |photo| %>
@@ -89,7 +176,7 @@
 			</div>
 		</div>	
 
-	<!-- second row, #connections -->
+	<!-- fourth row, #connections -->
 
 		<div class="userwrapper">
 			<h1 class="proheaders">
@@ -97,18 +184,9 @@
 			</h1>
 			<div class="editphoto">
 				<span class="editpng">
-					<% if @user == current_user %>
-						<%= link_to users_path do %>
-				 			<%= image_tag "/images/edit.png" %>
-				 		<% end %>
-				 		<%= link_to users_path(current_user) do %>
-				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% else %>
-				 		<%= link_to users_path(current_user) do %>
-				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% end %>
+			 		<%= link_to users_path do %>
+			 			<%= image_tag "/images/eye.png" %>
+			 		<% end %>
 			 	</span>
 			 	<div class="float">
 					<% @users.each do |user| %>
@@ -138,91 +216,10 @@
 				</div>
 			</div>
 		</div>
-
-	<!-- third row, #posts -->
-
-		<div class="prowrapper">
-			<h1 class="proheaders">
-				Your Posts	
-			</h1>
-			<div class="editphoto">
-			<!-- edit icon -->
-				<span class="editpng">
-					<% if @user == current_user %>
-						<%= link_to new_user_photo_path(current_user) do %>
-				 			<%= image_tag "/images/edit.png" %>
-				 		<% end %>
-				 		<%= link_to user_posts_path(current_user) do %>
-				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% else %>
-				 		<%= link_to user_photos_path(current_user) do %>
-				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% end %>
-			 	</span>
-			 	<div class="float">
-					<% @posts.each do |post| %>
-						<div class="photo">
-						 	<span class="postavatar">
-						 	<%= image_tag post.avatar.url(:thumb) %>
-						 	</span><br>
-							<%= link_to post.title, user_profile_path %><br>
-							<%= post.body %>
-						</div>
-					<% end %>
-					<div class="photo">
-						post
-					</div>
-					<div class="photo">
-						post
-					</div>
-					<div class="photo">
-						post
-					</div>
-				</div>
-			</div>
-		</div>
-
-	<!-- fourth row, #media -->
-
-		<div class="prowrapper">
-			<h1 class="proheaders">
-				Your Media Shares	
-			</h1>
-			<div class="editphoto">
-			<!-- edit icon -->
-				<span class="editpng">
-					<% if @user == current_user %>
-						<%= link_to new_user_photo_path(current_user) do %>
-				 			<%= image_tag "/images/edit.png" %>
-				 		<% end %>
-				 		<%= link_to user_photos_path(current_user) do %>
-				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% else %>
-				 		<%= link_to user_photos_path(current_user) do %>
-				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% end %>
-			 	</span>
-				<div class="float">
-					<div class="photo">
-						media
-					</div>
-					<div class="photo">
-						media
-					</div>
-					<div class="photo">
-						media
-					</div>
-					<div class="photo">
-						media
-					</div>
-				</div>
-			</div>
-		</div>	
 	</div>
+
+
+
 
 <% else %>
 
@@ -236,7 +233,7 @@
 		</div><br>
 	</h1>
 
-<!-- profile info -->
+<!-- profile info on left -->
 
 	<div class="profile">
 		<%= image_tag @profile.avatar.url(:medium) %><br>
@@ -273,32 +270,105 @@
 
 
 <!-- above, end of profile info on left -->
-<!-- first row, #selfies -->
+<!-- below, beginning of profile onfo on right -->
 
 	<div id="proright">
+
+	<!-- first row, #media -->
+
+		<div class="mediawrapper">
+			<h1 class="proheaders">
+				<%= @profile.fname %>'s Media Shares	
+			</h1>
+			<div class="editphoto">
+			<!-- edit icon -->
+				<span class="editpng">
+					<%= link_to user_photos_path(current_user) do %>
+			 			<%= image_tag "/images/eye.png" %>
+			 		<% end %>
+			 	</span>
+				<div class="float">
+					<% @media.each do |medium| %>
+						<div class="media">
+						 	<span class="postavatar">
+						 	<%= video_tag medium.avatar.url(:thumb), :controls => true %>
+						 	</span>
+						 	<h4>
+								<%= link_to medium.name, user_medium_path %><br><br>
+								<%= medium.description %>
+							</h4>
+						</div>
+					<% end %>
+					<div class="photo">
+						media
+					</div>
+					<div class="photo">
+						media
+					</div>
+					<div class="photo">
+						media
+					</div>
+					<div class="photo">
+						media
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<!-- second row, #posts -->
+
+		<div class="prowrapper">
+			<h1 class="proheaders">
+				Posts of <%= @profile.fname %>	
+			</h1>
+			<div class="editphoto">
+			<!-- edit icon -->
+				<span class="editpng">
+					<%= link_to user_posts_path(@profile.user) do %>
+				 			<%= image_tag "/images/eye.png" %>
+				 	<% end %>
+			 	</span>
+			 	<div class="float">
+					<% @posts.each do |post| %>
+						<div class="photo">
+						 	<span class="postavatar">
+						 	<%= image_tag post.avatar.url %>
+						 	</span>
+						 	<h4>
+								<%= link_to post.title, user_post_path %><br><br>
+								<%= post.body %>
+							</h4>
+						</div>
+					<% end %>
+					<div class="photo">
+						post
+					</div>
+					<div class="photo">
+						post
+					</div>
+					<div class="photo">
+						post
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<!-- third row, #selfies -->
+
 		<div class="prowrapper">
 			<h1 class="proheaders">
 				Photos of <%= @profile.fname %>
 			</h1>
 			<div class="editphoto">
 				<span class="editpng">
-					<% if @user == current_user %>
-						<%= link_to new_user_photo_path(current_user) do %>
-				 			<%= image_tag "/images/edit.png" %>
-				 		<% end %>
-				 		<%= link_to user_photos_path(current_user) do %>
-				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% else %>
-				 		<%= link_to user_photos_path(current_user) do %>
-				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% end %>
+			 		<%= link_to user_photos_path(@profile.user) do %>
+			 			<%= image_tag "/images/eye.png" %>
+			 		<% end %>
 			 	</span>
 			 	<div class="float">
 					<% @photos.each do |photo| %>
 				 		<div class="photo">
-				 			<%= link_to user_photo_path(current_user, photo) do %>
+				 			<%= link_to user_photo_path(@profile.user, photo) do %>
 				 				<%= image_tag photo.avatar.url(:medium) %><br>
 				 			<% end %>
 							<%= photo.description %><br>
@@ -308,7 +378,8 @@
 			</div>
 		</div>	
 
-	<!-- second row, #connections -->
+
+	<!-- fourth row, #connections -->
 
 		<div class="userwrapper">
 			<h1 class="proheaders">
@@ -316,18 +387,9 @@
 			</h1>
 			<div class="editphoto">
 				<span class="editpng">
-					<% if @user == current_user %>
-						<%= link_to users_path do %>
-				 			<%= image_tag "/images/edit.png" %>
-				 		<% end %>
-				 		<%= link_to users_path(current_user) do %>
+					<%= link_to users_path(current_user) do %>
 				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% else %>
-				 		<%= link_to users_path(current_user) do %>
-				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% end %>
+			 		<% end %>
 			 	</span>
 			 	<div class="float">
 					<% @users.each do |user| %>
@@ -353,90 +415,6 @@
 					</div>
 					<div class="user">
 						connection
-					</div>
-				</div>
-			</div>
-		</div>
-
-	<!-- third row, #posts -->
-
-		<div class="prowrapper">
-			<h1 class="proheaders">
-				Posts of <%= @profile.fname %>	
-			</h1>
-			<div class="editphoto">
-			<!-- edit icon -->
-				<span class="editpng">
-					<% if @user == current_user %>
-						<%= link_to new_user_photo_path(current_user) do %>
-				 			<%= image_tag "/images/edit.png" %>
-				 		<% end %>
-				 		<%= link_to user_posts_path(current_user) do %>
-				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% else %>
-				 		<%= link_to user_photos_path(current_user) do %>
-				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% end %>
-			 	</span>
-			 	<div class="float">
-					<% @posts.each do |post| %>
-						<div class="photo">
-						 	<span class="postavatar">
-						 	<%= image_tag post.avatar.url(:thumb) %>
-						 	</span><br>
-							<%= link_to post.title, user_profile_path %><br>
-							<%= post.body %>
-						</div>
-					<% end %>
-					<div class="photo">
-						post
-					</div>
-					<div class="photo">
-						post
-					</div>
-					<div class="photo">
-						post
-					</div>
-				</div>
-			</div>
-		</div>
-
-	<!-- fourth row, #media -->
-
-		<div class="prowrapper">
-			<h1 class="proheaders">
-				<%= @profile.fname %>'s Media Shares	
-			</h1>
-			<div class="editphoto">
-			<!-- edit icon -->
-				<span class="editpng">
-					<% if @user == current_user %>
-						<%= link_to new_user_photo_path(current_user) do %>
-				 			<%= image_tag "/images/edit.png" %>
-				 		<% end %>
-				 		<%= link_to user_photos_path(current_user) do %>
-				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% else %>
-				 		<%= link_to user_photos_path(current_user) do %>
-				 			<%= image_tag "/images/eye.png" %>
-				 		<% end %>
-				 	<% end %>
-			 	</span>
-				<div class="float">
-					<div class="photo">
-						media
-					</div>
-					<div class="photo">
-						media
-					</div>
-					<div class="photo">
-						media
-					</div>
-					<div class="photo">
-						media
 					</div>
 				</div>
 			</div>

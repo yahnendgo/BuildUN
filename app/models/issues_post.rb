@@ -1,4 +1,4 @@
-class IssuesPost < ActiveRecord::Base
+class IssuePost < ActiveRecord::Base
   belongs_to :issue
-  belongs_to :posts
+  belongs_to :post
 end

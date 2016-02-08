@@ -33,8 +33,9 @@ class ProfilesController < ApplicationController
     @user = User.find_by_id params[:user_id]
     @users = User.all
     @profile = @user.profile
-    @photos = @user.photos
-    @posts = Post.all
+    @photos = @user.photos.order id: :desc
+    @posts = @user.posts.order id: :desc
+    @media = @user.media.order id: :desc
   end
 
   def destroy

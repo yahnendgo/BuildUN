@@ -1,11 +1,20 @@
-<h2>
-	<% if current_user %>
-	<%= current_user.profile.fname %>, what an awesome post!
-	<% else %>
-	Check out <%= @user.profile.fname %>'s awesome post!
-	<% end %>
-</h2>
-	<%= image_tag @post.avatar.url(:medium) %><br>
-	<%= @post.title %><br>
-	<%= @post.body %><br>
-	<%= link_to "See all" + current_user.profile.fname + "'s posts", user_posts_path %>
+<div id="fixer">
+	<div class="headers">
+		<h1>
+			<% if current_user %>
+			<%= current_user.profile.fname %>, what an awesome post!
+			<% else %>
+			Check out <%= @user.profile.fname %>'s awesome post!
+			<% end %>
+		</h1>
+		<h2>
+			<span class="tag">Post Title:</span><br>
+			<%= @post.title %><br>
+		</h2>
+		<div class="issuesShow">
+			<%= image_tag @post.avatar.url(:medium) %><br>
+			<%= @post.body %><br>
+			<%= link_to "See all" + current_user.profile.fname + "'s posts", user_posts_path %>
+		</div>
+	</div>
+</div>
